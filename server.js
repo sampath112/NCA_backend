@@ -6,12 +6,15 @@ require("dotenv").config();
 const app = express();
 
 // ✅ Apply Middleware in the Correct Order
-app.use(cors({
-    origin: "http://localhost:5173",  // Match your React frontend port
+app.use(
+  cors({
+    origin: "*", // Allow all origins temporarily for testing
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
+    credentials: true,
+  })
+);
+
 
 // ✅ Make sure to parse JSON requests
 app.use(express.json());
